@@ -1,0 +1,66 @@
+<header>
+    <div class="topnav">
+        <a href="home">Moovie</a>
+        <a href="ratings">Ratings</a>
+        <a class="active">Bucket Lists</a>
+        <a href="reviews">Reviews</a>
+        <a *ngIf="currentUser; else loginLink">{{currentUser}}</a>
+        <ng-template #loginLink><a href="authenticate">Log In</a></ng-template>
+        <a *ngIf="currentUser" (click)="logout()">Logout</a>
+        <img src="../../assets/cowLogo.png" alt="Logo" class="logo">
+    </div>
+</header>
+
+<div class="container">
+    <h2>The 15 Best Movies To See In Your Lifetime</h2>
+    <ul>
+        <ng-container *ngFor="let item of movies | slice:0:(moviesViewAll ? movies.length : 2)">
+            <li *ngIf="isString(item)">{{ item }}</li>
+            <ng-container *ngIf="isObject(item)">
+                <li>{{ item.title }}
+                    <ul>
+                        <li *ngFor="let movie of item.movies">{{ movie }}</li>
+                    </ul>
+                </li>
+            </ng-container>
+        </ng-container>
+    </ul>
+    <button class="show-more-button" (click)="toggleView('movies')" type="button">View {{ moviesViewAll ? 'less' : 'more' }}</button>
+
+    <h2>Top 5 Best Horror movies</h2>
+    <ul>
+        <ng-container *ngFor="let item of horrorMovies | slice:0:(horrorViewAll ? horrorMovies.length : 2)">
+            <li *ngIf="isString(item)">{{ item }}</li>
+            <ng-container *ngIf="isObject(item)">
+                <li>{{ item.title }}
+                    <ul>
+                        <li *ngFor="let movie of item.movies">{{ movie }}</li>
+                    </ul>
+                </li>
+            </ng-container>
+        </ng-container>
+    </ul>
+    <button class="show-more-button" (click)="toggleView('horror')" type="button">View {{ horrorViewAll ? 'less' : 'more' }}</button>
+
+    <h2>Top 5 Best Mystery movies</h2>
+    <ul>
+        <ng-container *ngFor="let item of mysteryMovies | slice:0:(mysteryViewAll ? mysteryMovies.length : 2)">
+            <li *ngIf="isString(item)">{{ item }}</li>
+            <ng-container *ngIf="isObject(item)">
+                <li>{{ item.title }}
+                    <ul>
+                        <li *ngFor="let movie of item.movies">{{ movie }}</li>
+                    </ul>
+                </li>
+            </ng-container>
+        </ng-container>
+    </ul>
+    <button class="show-more-button" (click)="toggleView('mystery')" type="button">View {{ mysteryViewAll ? 'less' : 'more' }}</button>
+</div>
+
+<footer>
+    <hr>
+    &copy; 2024 all rights reserved
+    <br>
+    <small><a href="mailto:david.biris1&#64;stud.ubbcluj.ro">david.biris1&#64;stud.ubbcluj.ro</a></small>
+</footer>

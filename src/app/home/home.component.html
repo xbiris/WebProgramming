@@ -1,0 +1,83 @@
+<header>
+  <div class="topnav">
+    <a class="active">Moovie</a>
+    <a href="ratings">Ratings</a>
+    <a href="bucket-list">Bucket Lists</a>
+    <a href="reviews">Reviews</a>
+    <a *ngIf="currentUser; else loginLink">{{currentUser}}</a>
+    <ng-template #loginLink><a href="authenticate">Log In</a></ng-template>
+    <a *ngIf="currentUser" (click)="logout()">Logout</a>
+    <img src="../../assets/cowLogo.png" alt="Logo" class="logo">
+  </div>
+</header>
+<h1>Now In Theaters</h1>
+
+<div class="scroll-container">
+  <a href="https://www.cinemacity.ro/"><img src="../../assets/psycho.jpg" alt="psycho"></a>
+  <a href="https://www.cinemacity.ro/"><img src="../../assets/requiem_for_a_dream.jpg" alt="requiem_for_a_dream"></a>
+  <a href="https://www.cinemacity.ro/"><img src="../../assets/eternal_sunshine.png" alt="eternal_sunshine"></a>
+  <a href="https://www.cinemacity.ro/"><img src="../../assets/vertigo.png" alt="vertigo"></a>
+  <a href="https://www.cinemacity.ro/"><img src="../../assets/a_bronx_tale.jpg" alt="a_bronx_tale"></a>
+  <a href="https://www.cinemacity.ro/"><img src="../../assets/eyes_wide_shut.jpg" alt="eyes_wide_shut"></a>
+  <a href="https://www.cinemacity.ro/"><img src="../../assets/reservoir_dogs.jpg" alt="reservoir_dogs"></a>
+  <a href="https://www.cinemacity.ro/"><img src="../../assets/schindler's_list.jpg" alt="schindler's_list"></a>
+  <a href="https://www.cinemacity.ro/"><img src="../../assets/the_shining.jpg" alt="the_shining"></a>
+  <a href="https://www.cinemacity.ro/"><img src="../../assets/gaslight.jpg" alt="gaslight"></a>
+</div>
+
+<div class="container">
+  <h2>Movies Of The Day</h2>
+  <input type="text" [(ngModel)]="searchTerm" placeholder="Search movie..." class="form-control short-input" style="width: 150px;">
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th (click)="onSort('director')">
+        Director
+        <span *ngIf="sortColumn === 'director'">
+          {{ sortDirection === 'asc' ? '⬆' : '⬇' }}
+        </span>
+      </th>
+      <th (click)="onSort('title')">
+        Movie
+        <span *ngIf="sortColumn === 'title'">
+          {{ sortDirection === 'asc' ? '⬆' : '⬇' }}
+        </span>
+      </th>
+      <th (click)="onSort('rating')">
+        User Rating
+        <span *ngIf="sortColumn === 'rating'">
+          {{ sortDirection === 'asc' ? '⬆' : '⬇' }}
+        </span>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let movie of searchMovies()">
+      <td>{{ movie.director }}</td>
+      <td>{{ movie.title }}</td>
+      <td>{{ movie.rating }}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<br><br><br>
+<div class="container">
+  <img src="../../assets/clapperboard.png" alt="SelectImage" style="width: 20%;" (click)="showImageModal()">
+</div>
+<div *ngIf="isImageModalOpen" class="modal">
+  <div class="modal-content">
+    <span class="close" (click)="isImageModalOpen = false">&times;</span>
+    <img src="../../assets/clapperboard.png" alt="Clapperboard" style="width: 100%;">
+  </div>
+</div>
+
+
+<footer>
+<hr>
+&copy; 2024 all rights reserved
+<br>
+<small><a href="mailto:david.biris1&#64;stud.ubbcluj.ro">david.biris1&#64;stud.ubbcluj.ro</a></small>
+</footer>

@@ -1,0 +1,181 @@
+<header>
+  <div class="topnav">
+    <a href="home">Moovie</a>
+    <a href="ratings">Ratings</a>
+    <a href="bucket-list">Bucket Lists</a>
+    <a class="active">Reviews</a>
+    <a *ngIf="currentUser; else loginLink">{{currentUser}}</a>
+    <ng-template #loginLink><a href="authenticate">Log In</a></ng-template>
+    <a *ngIf="currentUser" (click)="logout()">Logout</a>
+    <img src="../../assets/cowLogo.png" alt="Logo" class="logo">
+  </div>
+</header>
+<article>
+  <h2>Critic reviews</h2>
+</article>
+
+<table>
+  <tbody>
+    <tr>
+      <td><b>Vertigo (1958)</b></td>
+      <td>
+        <b>Reviews from critics</b>
+        <table>
+          <tbody>
+            <tr>
+              <td>
+                <b>Chicago Sun-Times: </b><br>
+                Vertigo, which is one of the two or three best films Hitchcock ever made, is the most confessional,
+                dealing directly with the themes that controlled his art.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>The Guardian: </b><br>
+                Vertigo also combines in an almost unique balance Hitchcock's brash flair for psychological shocks with
+                his elegant genius for dapper stylishness. Like Psycho, it ends in an “o”, or maybe “oh!” The ancient
+                house adjoining the Bates motel in Psycho certainly has an unearthly similarity to San Francisco's
+                creepy old McKitterick Hotel in Vertigo.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>The New Yorker: </b><br>
+                Vertigo is one of the great movies about movies, and about Hitchcock's own way with them.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Rolling Stone: </b><br>
+                This dizzyingly intricate film reveals new facets each time you see it. We leave Vertigo unsettled, like
+                Scottie, who ends up on the edge of a precipice. Hitchcock is daring us to leap. He has prepared the
+                ultimate fix for a cinema junkie: a movie to get lost in.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+
+    <tr>
+      <td><b>The Godfather (1972)</b></td>
+      <td>
+        <b>Reviews from critics</b>
+        <table>
+          <tbody>
+            <tr>
+              <td>
+                <b>Austin Chronicle: </b><br>
+                Just about as great as a movie's ever gonna be... As for the storytelling, The Godfather is an
+                intricately constructed gem that simultaneously kicks ass.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Chicago Sun-Times: </b><br>
+                The wedding sequence... is a virtuoso stretch of filmmaking: Coppola brings his large cast onstage so
+                artfully that we are drawn at once into the Godfather's world.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>The New York Times: </b><br>
+                One of the most brutal and moving chronicles of American life ever designed within the limits of popular
+                entertainment.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>LA Weekly: </b><br>
+                The Godfather traces the arc of this doomed idealism with a beauty that is still fresh.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+
+    <tr>
+      <td><b>The Silence of the Lambs (1991)</b></td>
+      <td>
+        <b>Reviews from critics</b>
+        <table>
+          <tbody>
+            <tr>
+              <td>
+                <b>USA Today: </b><br>
+                A movie with this kind of haunting power comes along only once every decade or so.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>San Francisco Chronicle: </b><br>
+                The interplay between Starling and Lecter as they share an indefinable, dark understanding gives the
+                film its unforgettable and unsettling power.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Rolling Stone: </b><br>
+                The superbly crafted suspense thriller slams you like a sudden blast of bone-chilling, pulse-pounding
+                terror.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Los Angeles Times: </b><br>
+                Hopkins' insinuating performance puts him right up there with the screen's great bogeymen.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+
+    <tr>
+      <td><b>Eyes Wide Shut (1999)</b></td>
+      <td>
+        <b>Reviews from critics</b>
+        <table>
+          <tbody>
+            <tr>
+              <td>
+                <b>The New York Times: </b><br>
+                Kubrick left one more brilliantly provocative tour de force as his epitaph.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Film.com: </b><br>
+                As the late Stanley Kubrick's swan song, it fills the bill magnificently.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>USA Today: </b><br>
+                A precisely modulated and mostly mesmerizing 2-hour suspense movie, in part because it's one of the most
+                bravely disturbing screen works ever attempted about thoughts withheld by even the most devoted marriage
+                partners and the ramifications of voicing them.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b>Chicago Tribune: </b><br>
+                A spellbinder: provocatively conceived, gorgeously shot, and masterfully executed.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+
+
+<footer>
+  <hr>
+  &copy; 2024 all rights reserved
+  <br>
+  <small><a href="mailto:david.biris1&#64;stud.ubbcluj.ro">david.biris1&#64;stud.ubbcluj.ro</a></small>
+</footer>

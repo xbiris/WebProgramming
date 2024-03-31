@@ -1,0 +1,84 @@
+<header>
+  <div class="topnav">
+    <a href="home">Moovie</a>
+    <a href="ratings">Ratings</a>
+    <a href="bucket-list">Bucket Lists</a>
+    <a href="reviews">Reviews</a>
+    <a *ngIf="currentUser; else loginLink">{{currentUser}}</a>
+    <ng-template #loginLink><a href="authenticate">Log In</a></ng-template>
+    <a *ngIf="currentUser" (click)="logout()">Logout</a>
+    <img src="../../assets/cowLogo.png" alt="Logo" class="logo">
+  </div>
+</header>
+
+<div class="forms-container">
+    <div class="login-form">
+      <h3>Log In</h3>
+      <form (submit)="login()">
+        <label for="emailLogin">Email</label>
+        <span id="emailLoginValid" class="validation-sign">{{emailLoginValid}}</span>
+        <input type="email" id="emailLogin" name="email" [(ngModel)]="emailLogin" (input)="validateEmailLogin()" placeholder="Email..">
+
+        <label for="passLogin">Password</label>
+        <input type="password" id="passLogin" name="password" [(ngModel)]="passwordLogin" placeholder="Password..">
+        
+        <input type="submit" value="Log In">
+        <div *ngIf="loginErrorMessage" class="error-message">
+          {{ loginErrorMessage }}
+        </div>
+      </form>
+
+    </div>
+  
+    <div class="register-form">
+      <h3>Register</h3>
+      <form (submit)="register()">
+        
+        <label for="userName">User Name</label>
+        <input type="text" id="userName" name="username" [(ngModel)]="userName" placeholder="Username..">
+
+        <label for="emailRegister">Email</label>
+        <span id="emailRegisterValid" [ngClass]="emailRegisterClass">{{emailRegisterValid}}</span>
+        <input type="email" id="emailRegister" name="email" [(ngModel)]="emailRegister" (input)="validateEmailRegister()" placeholder="Email..">
+
+        <label for="passRegister">Password</label>
+        <span id="passRegisterValid" [ngClass]="passRegisterClass">{{passRegisterValid}}</span>
+        <input type="password" id="passRegister" name="password" [(ngModel)]="passRegister" (input)="validatePasswordRegister()" placeholder="Password..">
+
+        <label for="isAdminCheckbox">Are you Admin?</label>
+        <input type="checkbox" id="isAdminCheckbox" [(ngModel)]="isAdmin" name="isAdmin" />
+        <br>
+        <label for="countrySelect">Country</label>
+        <select id="countrySelect" [(ngModel)]="selectedCountry" (change)="populateCities()" name="country" class="forms-select">
+            <option *ngFor="let country of countries" [value]="country.code">{{country.name}}</option>
+        </select>
+
+        <label for="citySelect">City</label>
+        <select id="citySelect" [(ngModel)]="selectedCity" name="city" class="forms-select">
+            <option *ngFor="let city of cities" [value]="city">{{city}}</option>
+        </select>  
+
+        <label for="genreSearch">What's your favorite movie genre?</label>
+        <input type="text" id="genreSearch" name="genreSearch" [(ngModel)]="searchGenre" placeholder="Search genres.." autocomplete="off">
+        <div class="genreList">
+          <div class="genreList-content" *ngIf="searchGenre">
+            <div *ngFor="let genre of filteredGenres" (click)="onSelectGenre(genre)" class="genreList-item">
+              {{ genre }}
+            </div>
+          </div>
+        </div>
+
+        <input type="submit" value="Register">
+        <div *ngIf="registerErrorMessage" class="error-message">
+          {{ registerErrorMessage }}
+        </div>
+      </form>
+    </div>
+</div>
+
+<footer>
+    <hr>
+    &copy; 2024 all rights reserved
+    <br>
+    <small><a href="mailto:david.biris1&#64;stud.ubbcluj.ro">david.biris1&#64;stud.ubbcluj.ro</a></small>
+</footer>
